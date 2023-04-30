@@ -115,7 +115,7 @@
 		}
 
 		function getIframe(url) {
-			return '<iframe src="' + url + '" scrolling="no" frameborder="0" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe>';
+			return '<video width="320" height="240" controls><source src="' + url + '" type="video/mp4"><source src="' + url + '" type="video/ogg"></video>';
 		}
 
 		$(document).on("click", "[data-load-hosts]", function () {
