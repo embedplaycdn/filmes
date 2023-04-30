@@ -115,7 +115,7 @@
 		}
 
 		function getIframe(url) {
-			return '<video width="320" height="240" controls><source src="' + url + '" type="video/mp4"><source src="' + url + '" type="video/ogg"></video>';
+			return '<video width="100%" height="100%" controls><source src="' + url + '" type="video/mp4"><source src="' + url + '" type="video/ogg"></video>';
 		}
 
 		$(document).on("click", "[data-load-hosts]", function () {
@@ -134,7 +134,7 @@
 			$("[data-load-embed]").removeClass("active");
 			$(this).addClass("active");
 
-			let url = "https://cloclo11.cloud.mail.ru/weblink/view//Pavx/YCHetcAxd";
+			let url = "https://cloclo11.cloud.mail.ru/weblink/view//Pavx/YCHetcAxd?.mp4";
 			$("#embed").html(getIframe(url));
 			$("#embed").addClass("active");
 			$("#main").addClass("hidden");
