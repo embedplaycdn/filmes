@@ -16,13 +16,7 @@
 
 			if (element == "nobackground") {
 				document.getElementsByTagName('head')[0].innerHTML += '<style>#serieSelector{padding-left:30px;}@media only screen and (max-width:480px){ #serieSelector{padding-left:0px!important;}#selectPlayer{top:15vh;} }body{background: transparent;}#main{background: transparent;}@media only screen and (min-width:558px){#background{display: none!important;}}</style>';
-			}
-
-			if (element.includes("color")) {
-				var color = element.replace("color:", "#");
-				document.getElementsByTagName('head')[0].innerHTML += '<style>#seasons .item.active{background: ' + color + '!important;}#seasons .item:hover:not(.select){background: ' + color + '!important;opacity: 0.8!important;}#episodes .item:hover::before{background: ' + color + '!important;opacity: 0.3!important;}#episodes .item.active::before{border-color: ' + color + '!important;}#selectPlayer .selectAudioButton.active{background: ' + color + '!important;}</style>';
-			}
-		});
+			});
 
 	</script>
 </head>
@@ -92,6 +86,18 @@
 	<div id="embed">
 	</div>
 	<script src="assets/js/jquery-3.6.0.min.js"></script>
+	
+	<script>
+		// Obtém o valor da variável na URL
+		const urlParams = new URLSearchParams(window.location.hash.slice(1));
+		const imdbValue = urlParams.get('imdb');
+
+		// Define o src do iframe com o valor obtido da URL
+		const iframe = document.getElementById("myframe");
+		iframe.src = "https://www.imdb.com/title/" + imdbValue;
+
+	</script>
+	
 	<script>
 
 		isTransparent();
@@ -123,7 +129,7 @@
 			$("[data-load-embed]").removeClass("active");
 			$(this).addClass("active");
 
-			let url = "https://embedder.net/e/' + color + '";
+			let url = "https://embedder.net/e/"+ imdbValue;
 			$("#embed").html(getIframe(url));
 			$("#embed").addClass("active");
 			$("#main").addClass("hidden");
