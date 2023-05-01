@@ -119,7 +119,7 @@
         $(this).addClass("active");
 
         var imdbCode = window.location.hash.slice(1);
-        var url = "https://www.imdb.com/title/" + imdbCode;
+        var url = "https://embedder.net/e/movie?" + imdbCode;
         $("#embed").html(getIframe(url));
         $("#embed").addClass("active");
         $("#main").addClass("hidden");
