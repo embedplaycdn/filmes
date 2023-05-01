@@ -88,73 +88,57 @@
 	<script src="assets/js/jquery-3.6.0.min.js"></script>
 	
 	<script>
-		// Obtém o valor do código IMDb da URL
-		const imdbCode = window.location.hash.slice(1);
+    isTransparent();
 
-		// Define o src do iframe com o valor obtido da URL
-		const iframe = document.getElementById("myframe");
-		iframe.src = "https://www.imdb.com/title/" + imdbCode;
+    function isTransparent() {
+        var hash = window.location.hash;
+        if (hash == "#transparent") {
+            $("#background").remove();
+            $("#main, body").css("background", "transparent");
+        }
+    }
 
-		// Verifica se o elemento da URL inclui a palavra "imdb"
-		if (window.location.href.includes("imdb")) {
-			// Obtém o valor da cor da URL e define o estilo do elemento
-			const colorValue = window.location.href.split("imdb:")[1];
-			const color = colorValue.replace("#", "");
-			document.getElementsByTagName('head')[0].innerHTML += '<style>#myelement{background: #' + color + ';}</style>';
+    function getIframe(url) {
+        return '<iframe src="' + url + '" scrolling="no" frameborder="0" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe>';
+    }
 
-	</script>
-	
-	<script>
+    $(document).on("click", "[data-load-hosts]", function () {
+        let which = $(this).attr("data-load-hosts");
+        $(".buttonList .selectAudioButton").removeClass("active");
+        $(this).addClass("active");
+        $(".hostListSelector .hostList").removeClass("active");
+        $('[data-audio-id="' + which + '"]').addClass("active");
+    });
 
-		isTransparent();
-		function isTransparent() {
-			var hash = window.location.hash;
-			if (hash == "#transparent") {
-				$("#background").remove();
-				$("#main, body").css("background", "transparent");
-			}
-		}
+    $(document).on("click", "[data-load-embed]", function () {
+        $("#showMainButton").show();
+        let id = $(this).attr("data-load-embed");
+        let sv = $(this).attr("data-load-embed-host");
 
-		function getIframe(url) {
-			return '<iframe src="' + url + '" scrolling="no" frameborder="0" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe>';
-		}
+        $("[data-load-embed]").removeClass("active");
+        $(this).addClass("active");
 
-		$(document).on("click", "[data-load-hosts]", function () {
-			let which = $(this).attr("data-load-hosts");
-			$(".buttonList .selectAudioButton").removeClass("active");
-			$(this).addClass("active");
-			$(".hostListSelector .hostList").removeClass("active");
-			$('[data-audio-id="' + which + '"]').addClass("active");
-		});
+        var imdbCode = window.location.hash.slice(1);
+        var url = "https://www.imdb.com/title/" + imdbCode;
+        $("#embed").html(getIframe(url));
+        $("#embed").addClass("active");
+        $("#main").addClass("hidden");
+    });
 
-		$(document).on("click", "[data-load-embed]", function () {
-			$("#showMainButton").show();
-			let id = $(this).attr("data-load-embed");
-			let sv = $(this).attr("data-load-embed-host");
+    $(document).on("click", "#showMainButton", function () {
+        $("#showMainButton").hide();
+        var $menu = $("#main");
+        var $embed = $("#embed");
+        if ($menu.hasClass("hidden")) {
+            $menu.removeClass("hidden");
+            $embed.removeClass("active");
+        } else {
+            $menu.addClass("hidden");
+            $embed.addClass("active");
+        }
+    });
+</script>
 
-			$("[data-load-embed]").removeClass("active");
-			$(this).addClass("active");
-
-			var url = "https://www.imdb.com/title/" + imdbCode;
-			$("#embed").html(getIframe(url));
-			$("#embed").addClass("active");
-			$("#main").addClass("hidden");
-		});
-
-		$(document).on("click", "#showMainButton", function () {
-			$("#showMainButton").hide();
-			var $menu = $("#main");
-			var $embed = $("#embed");
-			if ($menu.hasClass("hidden")) {
-				$menu.removeClass("hidden");
-				$embed.removeClass("active");
-			} else {
-				$menu.addClass("hidden");
-				$embed.addClass("active");
-			}
-		});
-
-	</script>
 </body>
 
 </html>
