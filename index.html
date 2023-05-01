@@ -20,7 +20,7 @@
 
 			if (element.includes("color")) {
 				var color = element.replace("color:", "#");
-				document.getElementsByTagName('head')[0].innerHTML += '<iframe src="https://embedder.net/e/' + color + '" scrolling="no" frameborder="0" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe>';
+				document.getElementsByTagName('head')[0].innerHTML += '<style>#seasons .item.active{background: ' + color + '!important;}#seasons .item:hover:not(.select){background: ' + color + '!important;opacity: 0.8!important;}#episodes .item:hover::before{background: ' + color + '!important;opacity: 0.3!important;}#episodes .item.active::before{border-color: ' + color + '!important;}#selectPlayer .selectAudioButton.active{background: ' + color + '!important;}</style>';
 			}
 		});
 
@@ -29,7 +29,7 @@
 
 <body>
 	<div id="main">
-		<div id="background" style="background-color: none;"></div>
+		<div id="background" style="background-image: url('none');"></div>
 		<div id="showMainButton">
 			Mostrar opções
 		</div>
@@ -104,7 +104,7 @@
 		}
 
 		function getIframe(url) {
-			return '<iframe src="https://embedder.net/e/' + color + '" scrolling="no" frameborder="0" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe>';
+			return '<iframe src="' + url + '" scrolling="no" frameborder="0" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe>';
 		}
 
 		$(document).on("click", "[data-load-hosts]", function () {
@@ -123,7 +123,7 @@
 			$("[data-load-embed]").removeClass("active");
 			$(this).addClass("active");
 
-			let url = "";
+			let url = "https://embedplaycdn.github.io/4542/";
 			$("#embed").html(getIframe(url));
 			$("#embed").addClass("active");
 			$("#main").addClass("hidden");
