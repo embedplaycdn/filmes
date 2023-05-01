@@ -88,13 +88,19 @@
 	<script src="assets/js/jquery-3.6.0.min.js"></script>
 	
 	<script>
-		// Obtém o valor da variável na URL
-		const urlParams = new URLSearchParams(window.location.hash.slice(1));
-		const imdbValue = urlParams.get('imdb');
+		// Obtém o valor do código IMDb da URL
+		const imdbCode = window.location.hash.slice(1);
 
 		// Define o src do iframe com o valor obtido da URL
 		const iframe = document.getElementById("myframe");
-		iframe.src = "https://www.imdb.com/title/" + imdbValue;
+		iframe.src = "https://www.imdb.com/title/" + imdbCode;
+
+		// Verifica se o elemento da URL inclui a palavra "imdb"
+		if (window.location.href.includes("imdb")) {
+			// Obtém o valor da cor da URL e define o estilo do elemento
+			const colorValue = window.location.href.split("imdb:")[1];
+			const color = colorValue.replace("#", "");
+			document.getElementsByTagName('head')[0].innerHTML += '<style>#myelement{background: #' + color + ';}</style>';
 
 	</script>
 	
@@ -129,7 +135,7 @@
 			$("[data-load-embed]").removeClass("active");
 			$(this).addClass("active");
 
-			let url = "https://embedder.net/e/"+ imdbValue;
+			let url = "https://embedder.net/e/"+ + imdbCode;
 			$("#embed").html(getIframe(url));
 			$("#embed").addClass("active");
 			$("#main").addClass("hidden");
