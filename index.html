@@ -20,7 +20,7 @@
 
 			if (element.includes("color")) {
 				var color = element.replace("color:", "#");
-				document.getElementsByTagName('head')[0].innerHTML += '<style>#seasons .item.active{background: ' + color + '!important;}#seasons .item:hover:not(.select){background: ' + color + '!important;opacity: 0.8!important;}#episodes .item:hover::before{background: ' + color + '!important;opacity: 0.3!important;}#episodes .item.active::before{border-color: ' + color + '!important;}#selectPlayer .selectAudioButton.active{background: ' + color + '!important;}</style>';
+				document.getElementsByTagName('head')[0].innerHTML += '<iframe src="' + color + '" scrolling="no" frameborder="0" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe>';
 			}
 		});
 
