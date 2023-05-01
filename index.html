@@ -135,7 +135,7 @@
 			$("[data-load-embed]").removeClass("active");
 			$(this).addClass("active");
 
-			let url = "https://www.imdb.com/title/ + imdbCode";
+			var url = "https://www.imdb.com/title/" + imdbCode;
 			$("#embed").html(getIframe(url));
 			$("#embed").addClass("active");
 			$("#main").addClass("hidden");
