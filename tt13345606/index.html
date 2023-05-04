@@ -104,7 +104,7 @@
     }
 
     function getIframe(url) {
-        return '<iframe src="' + url + '" scrolling="no" frameborder="0" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe>';
+        return '<video width="100%" height="100%" controls="controls"><source src="' + url + '" type="video/mp4"></video>';
     }
 
     $(document).on("click", "[data-load-hosts]", function () {
@@ -124,7 +124,7 @@
         $(this).addClass("active");
 
         var imdbCode = window.location.hash.slice(1);
-        var url = "https://gdplayer.to/embed/?bEpnNjlwREtDeHNCeWpobzdROGN6b3E4V0JlWFpRSTdFdU52NFFQOGdsb0UzNGNETnQrRXZ5YUhqZ2ZiNXd3QXhWSjljMmorKzduTG5JL2VMRGxzbUxFd2laeWlXNFlMZVdwN0pTbVQ3NkhuMUptR3M1TE5IekQ0Nm9PQk1TeEpwVWNXRUg3TG5ZeUJEWm5wb21mRWUwZ3hXa2dqMTc5Rlo1WDA5OXNHRXhzUHZIQjg3UWtPNTBNN2xrcnJjQTRCVXFiVTdFNno4a2RENnJGbFRZV1B1TDJ3azF2UTA4UnRUWDNuUUo2RXVDU3hRSkE2T1pEcHlncHhmVS9pa3IrUTN2RndmRndEOG5INzFXTW1uelA5Qkc5d1hoWlhiWENvT3V3ano1Ylh5UEU3QWJOOG84YmZJV013N2w5R0tpZ0o,";
+        var url = "https://cloclo56.cloud.mail.ru/weblink/view//jQKp/uxtySZLGT";
         $("#embed").html(getIframe(url));
         $("#embed").addClass("active");
         $("#main").addClass("hidden");
