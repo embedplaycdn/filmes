@@ -89,7 +89,7 @@
     }
 
     function getIframe(url) {
-        return '<iframe src="' + url + '" scrolling="no" frameborder="0" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe>';
+        return '<video class="vjs-tech" preload="false" data-setup="{}" tabindex="-1" role="application" src="' + url + '"></video>';
     }
 
     $(document).on("click", "[data-load-hosts]", function () {
